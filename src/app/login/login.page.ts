@@ -8,18 +8,34 @@ import { Router } from '@angular/router';
   standalone: false,
 })
 export class LoginPage {
-  email: string = '';
+  username: string = '';
   password: string = '';
 
-  constructor(private router: Router) { }
+constructor(private router: Router) { }
 
-  login() {
-    if (this.email === 'test@duoc.cl' && this.password === '1234') {
-      // Aquí haces la redirección
-      this.router.navigate(['/home']);
-    } else {
-      alert('Correo o contraseña incorrectos');
-    }
+//Aqui validamos que el usuario tenga entre 3 y 8 caracteres alfanumericos
+isUsernameInvalid(): boolean {
+  return !this.username || !/^[a-zA-Z0-9]{3,8}$/.test(this.username);
+}
+
+//Aqui validamos que la contraseña sea numerica de 4 digitos
+isPasswordInvalid(): boolean {
+  return !this.password || !/^\d{4}$/.test(this.password);
+}
+
+login(form: any) {
+  if(this.isUsernameInvalid() || this.isPasswordInvalid()) {
+    alert('¡Ups! Debes ingresar datos válidos.');
+    return;
   }
+  (document.activeElement as HTMLElement)?.blur();
+  
+  this.router.navigate(['/home'], {
+    queryParams: {user: this.username}
+  });
+  }
+
+  
+
 
 }

@@ -1,18 +1,68 @@
-<ion-header>
-  <ion-toolbar color="tertiary">
-    <ion-title class="ion-text-center">Inicio</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding home-content">
+  <div class="home-container">
+    <h2 class="home-title">¡Bienvenido, {{ username }}!</h2>
+    <p class="home-subtitle">Completa tus datos</p>
 
-<ion-content class="ion-padding">
-  <div class="welcome-container">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title class="ion-text-center">¡Bienvenido!</ion-card-title>
-      </ion-card-header>
-      <ion-card-content class="ion-text-center">
-        <p>🥳</p>
-      </ion-card-content>
-    </ion-card>
+    <form>
+      <ion-item class="input-item">
+        <ion-label position="floating"></ion-label>
+        <ion-input
+          name="nombre"
+          [(ngModel)]="nombre"
+          [class.anim-mover]="animarNombre"
+          placeholder="Nombre"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item class="input-item">
+        <ion-label position="floating"></ion-label>
+        <ion-input
+          name="apellido"
+          [(ngModel)]="apellido"
+          [class.anim-mover]="animarApellido"
+          placeholder="Apellido"
+        ></ion-input>      
+      </ion-item>
+
+      <ion-item class="input-item">
+        <ion-label>Nivel de educación</ion-label>
+        <ion-select [(ngModel)]="educacion" name="educacion">
+          <ion-select-option value="Básica">Eduación Básica</ion-select-option>
+          <ion-select-option value="Media">Educación Media</ion-select-option>
+          <ion-select-option value="Superior">Educación Superior</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="input-item">
+        <ion-label>Fecha de nacimiento</ion-label>
+        <ion-datetime-button datetime="fechaNacimiento"></ion-datetime-button>
+      </ion-item>
+
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime
+            id="fechaNacimiento"
+            name="fechaNacimiento"
+            presentation="date"
+            color="tertiary"
+            [showDefaultButtons]="true"
+            doneText="¡Listo!"
+            cancelText="Nah"
+          >
+            <span slot="title">Selecciona tu fecha de nacimiento</span>
+          </ion-datetime>
+        </ng-template>
+      </ion-modal>
+
+      <div class="buttons">
+        <ion-button expand="block" color="danger" class="home-button" (click)="limpiarCampos()">
+          Limpiar
+        </ion-button>
+
+        <ion-button expand="block" color="primary" class="home-button" (click)="mostrarInfo()">
+          Mostrar
+        </ion-button>
+      </div>
+    </form>
   </div>
 </ion-content>

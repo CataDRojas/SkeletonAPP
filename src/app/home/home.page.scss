@@ -1,25 +1,63 @@
-.welcome-container {
+.home-content {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-}
-
-ion-card {
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
+  min-height: 100%;
   background: #f8f9fa;
 }
 
-ion-card-title {
-  font-size: 28px;
-  font-weight: bold;
-  color: #2c3e50;
+.home-container {
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-ion-card-content p {
-  font-size: 16px;
-  color: #636e72;
+.home-title {
+  text-align: center;
+  color: #3c3c3c;
+  font-size: 1.8rem;
+  margin-bottom: 0.25rem;
 }
+
+.home-subtitle {
+  text-align: center;
+  color: #777;
+  margin-bottom: 1.5rem;
+}
+
+.input-item {
+  margin-bottom: 1rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem; // espacio entre botones
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.home-button {
+  margin-top: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+}
+//animacion para el boton limpiar
+@keyframes moverIzqADer {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.anim-mover {
+  animation: moverIzqADer 1s ease forwards;
+}
+
